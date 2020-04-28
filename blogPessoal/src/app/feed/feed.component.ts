@@ -27,6 +27,9 @@ export class FeedComponent implements OnInit {
   // metodo que nao precisa de interação humana, ele ja inicia automaticamente
   ngOnInit(): void {
     this.findallPostagens()
+    // sempre que abrir o Feed ira para o início da página
+    window.scroll(0, 0);
+
   }
 
   findallPostagens() {
