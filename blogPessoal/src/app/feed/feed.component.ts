@@ -10,6 +10,13 @@ import { Postagem } from '../model/Postagem';
 export class FeedComponent implements OnInit {
 
   // Variaves
+
+  // key e reverse sao palavras reservadas do Orderby
+  // a chave da ordenação
+  key = 'data';
+  // inverte o valor padrão
+  reverse = true;
+
   // Variavel para listar todas as postagens (Array)
   listaPostagens: Postagem[];
   // Variavel para inserir uma nova postagem
