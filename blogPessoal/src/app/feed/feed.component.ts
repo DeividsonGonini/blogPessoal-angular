@@ -9,7 +9,11 @@ import { Postagem } from '../model/Postagem';
 })
 export class FeedComponent implements OnInit {
 
-  listaPostagens: Postagem[]
+  // Variaves
+  // Variavel para listar todas as postagens (Array)
+  listaPostagens: Postagem[];
+  // Variavel para inserir uma nova postagem
+  postagem: Postagem = new Postagem;
 
   constructor(private postagemService: PostagemService) { }
 
@@ -20,7 +24,16 @@ export class FeedComponent implements OnInit {
 
   findallPostagens() {
     this.postagemService.getAllPostagens().subscribe((resp: Postagem[]) => {
-      this.listaPostagens = resp
+      this.listaPostagens = resp;
+    })
+  }
+
+  publicar() {
+    this.postagemService.postPostagem(this.postagem).subscribe((resp: Postagem) => {
+      this.postagem = resp;
+
+      // faz o reload automatico da pagina apos a função ser chamada
+      location.assign('/feed');
     })
   }
 

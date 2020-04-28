@@ -50,18 +50,21 @@
                 <!-- formatação do formulario -->
                 <div class="form-group">
                     <label for="titulo" class="text-monospace">Título:</label>
-                    <input type="text" name="titulo" id="titulo" class="form-control" placeholder="Digite seu título">
+                    <input type="text" name="titulo" id="titulo" class="form-control" placeholder="Digite seu título"
+                        [(ngModel)]="postagem.titulo">
                 </div>
 
                 <div class="form-group">
                     <label for="texto" class="text-monospace">Texto:</label>
+
                     <textarea name="texto" id="texto" cols="30" rows="4" class="form-control"
-                        placeholder="Digite seu texto"></textarea>
+                        placeholder="Digite seu texto" [(ngModel)]="postagem.texto"></textarea>
                 </div>
 
                 <!-- Botao para publicar -->
-                <div class="d-flex justify-content-end">
-                    <button type="button" class="btn btn-outline-info w-25">Publicar</button>
+                <div class=" d-flex justify-content-end">
+                    <!-- (click) = evento Onclick do JavaScript (colocar a funçao que sera chamada ao clicar)-->
+                    <button type="button" class="btn btn-outline-info w-25" (click)="publicar()">Publicar</button>
                 </div>
             </div>
             <!-- fim do formulario -->
