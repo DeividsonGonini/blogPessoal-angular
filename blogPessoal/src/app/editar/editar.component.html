@@ -25,15 +25,6 @@
                     <!-- Botão GitHub -->
                     <a href="https://github.com/DeividsonGonini"
                         class="btn btn-outline-dark d-flex justify-content-center" target="_blank">GitHub</a>
-
-                    <!-- linha de separação -->
-                    <hr class="mt-4 mb-4">
-
-                    <h6 class="mb-3 text-monoscape text-center">Pesquisar por título</h6>
-                    <!-- caixa para a inserçao da pesquisa -->
-                    <input type="text" class="form-control mb-3 w-100" placeholder="Pesquisar Postagem">
-
-                    <button class="btn btn-outline-warning w-100" type="button">Pesquisa</button>
                 </div>
             </div>
 
@@ -45,7 +36,7 @@
 
             <!-- Formulario em Angular -->
             <div>
-                <h3 class="text-center mb-4 text-monospace">Como tem sido minha experiência na Generation?</h3>
+                <h3 class="text-center mb-4 text-monospace">Edição de Postagem</h3>
 
                 <!-- formatação do formulario -->
                 <div class="form-group">
@@ -64,52 +55,12 @@
                 <!-- Botao para publicar -->
                 <div class=" d-flex justify-content-end">
                     <!-- (click) = evento Onclick do JavaScript (colocar a funçao que sera chamada ao clicar)-->
-                    <button type="button" class="btn btn-outline-info w-25" (click)="publicar()">Publicar</button>
+                    <button type="button" class="btn btn-outline-info w-25" (click)="salvar()">Salvar</button>
                 </div>
             </div>
             <!-- fim do formulario -->
 
-            <!-- linha de separação -->
-            <hr class="mt-5 mb-5">
 
-            <h3 class="text-monospace text-center mb-5">Minhas Postagens</h3>
-
-            <!-- card para receber todas as postagens -->
-            <div class="card mb-4" *ngFor="let postagem of listaPostagens | orderBy: key: reverse">
-
-                <div class="card-header">
-
-                    <div class="row">
-                        <div class="col-md-8">
-                            <!-- conceito de interpolação, verificar os campos na model -->
-                            <h5 class="card-title">{{postagem.titulo}}</h5>
-                        </div>
-                        <div class="col-md-4 d-flex justify-content-end">
-                            <!-- RouterLink recebe a rota/editar passando o parametro da postagem -->
-                            <button class="btn btn-outline-info" [routerLink]="['/editar', postagem.id]">
-                                Editar
-                            </button>
-                        </div>
-                    </div>
-
-
-
-
-                </div>
-
-                <div class="card-body">
-                    <p class="card-text">{{postagem.texto}}</p>
-                    <!-- deixa o texto menor, como uma legenda -->
-                    <small class="form-text m-0 text-muted m-3 text-monospace">
-                        <!--Técnica Pipe | date: 'dd/MM/yyyy' é do Angular para conversao  -->
-                        Postado em {{postagem.data | date: 'dd/MM/yyyy'}}
-                        <!-- HH maiusculo para formato de 24h se for minusculo sera 12h -->
-                        às {{postagem.data | date: 'HH:mm'}}
-
-                    </small>
-
-                </div>
-            </div>
         </div>
 
     </div>
