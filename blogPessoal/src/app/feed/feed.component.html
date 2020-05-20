@@ -74,6 +74,17 @@
 
             <h3 class="text-monospace text-center mb-5">Minhas Postagens</h3>
 
+
+
+            <!-- Alert para confirmação que o item foi apagado -->
+            <!-- ngIf é uma condição que espera um boolean (true ou false) -->
+            <div *ngIf='alerta'>
+                <div class="alert alert-success" role="alert">
+                    Postagem deletada com Sucesso!!
+                </div>
+            </div>
+
+
             <!-- card para receber todas as postagens -->
             <div class="card mb-4" *ngFor="let postagem of listaPostagens | orderBy: key: reverse">
 
@@ -86,9 +97,14 @@
                         </div>
                         <div class="col-md-4 d-flex justify-content-end">
                             <!-- RouterLink recebe a rota/editar passando o parametro da postagem -->
-                            <button class="btn btn-outline-info" [routerLink]="['/editar', postagem.id]">
+                            <button class="btn btn-outline-info mr-3" [routerLink]="['/editar', postagem.id]">
                                 Editar
                             </button>
+
+                            <!-- Envia a postagem pelo ID para a rota deletar -->
+                            <button class="btn btn-outline-danger"
+                                [routerLink]="['/deletar, postagem.id']">Apagar</button>
+
                         </div>
                     </div>
 

@@ -1,0 +1,86 @@
+<div class="container">
+    <div class="row mt-5 mb-5">
+        <!-- barra lateral do feed -->
+        <div class="col-md-4">
+            <div class="card border-0" style="width: 18rem;">
+
+                <!-- centralizar a imagem -->
+                <div class="d-flex justify-content-center">
+                    <img class="card-img-top rounded-circle w-75 mt-3" src="../../assets/img/foto-Deividson.jpg"
+                        alt="...">
+                </div>
+
+                <div class="card-body">
+                    <!-- Nome -->
+                    <h5 class="card-title text-center">Deividson Gonini</h5>
+                    <!-- Resumo profissional -->
+                    <p class="card-text text-center">Desenvolvedor Full Stack Web Java Jr (Em formação) | Generation
+                        Brasil |
+                        Engenheiro da Computação | UNIBTA.
+                    </p>
+
+                    <!-- Botão LinkedIn -->
+                    <a href="https://www.linkedin.com/in/deividson-gonini/"
+                        class="btn btn-outline-info d-flex justify-content-center mb-3" target="_blank">LinkedIn
+                    </a>
+
+                    <!-- Botão GitHub -->
+                    <a href="https://github.com/DeividsonGonini"
+                        class="btn btn-outline-dark d-flex justify-content-center" target="_blank">GitHub
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- itens dinamicos do feed -->
+        <div class="col-md-8">
+
+            <div>
+                <h3 class="text-center mb-4 text-monospace">Deletar Postagem</h3>
+            </div>
+
+            <!-- card para receber a postagem que sera apagada -->
+            <div class="card mb-4">
+                <div class="card-header">
+                    <!-- conceito de interpolação, verificar os campos disponiveis na model -->
+                    <h5 class="card-title">{{postagem.titulo}}</h5>
+                </div>
+
+                <div class="card-body">
+                    <p class="card-text">{{postagem.texto}}</p>
+                    <!-- deixa o texto menor, como uma legenda -->
+                    <small class="form-text m-0 text-muted m-3 text-monospace">
+                        <!--Técnica Pipe | date: 'dd/MM/yyyy' é do Angular para conversao  -->
+                        Postado em {{postagem.data | date: 'dd/MM/yyyy'}}
+                        <!-- HH maiusculo para formato de 24h se for minusculo sera 12h -->
+                        às {{postagem.data | date: 'HH:mm'}}
+
+                    </small>
+
+                </div>
+            </div>
+
+            <hr class="my-5">
+
+            <div class="row">
+                <div class="col-md-12">
+                    <h5 class="text-monospace text-center mb-5">Tem certeza que deseja apagar essa postagem?</h5>
+                </div>
+            </div>
+
+            <!-- Botoes Sim e Não -->
+            <div class="row">
+                <div class="col-md-12 d-flex justify-content-center">
+                    <!-- botao Sim, chamando o metodo btnSim()-->
+                    <button class="btn btn-outline-success mr-5" (click)="btnSim()">Sim</button>
+
+                    <!-- botao Não, chamando o metodo btnNao()-->
+                    <button class="btn btn-outline-danger" (click)="btnNao()">Não</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
