@@ -26,6 +26,9 @@ export class FeedComponent implements OnInit {
   //false para nao ficar aparecendo a todo momento
   alerta: boolean = false
 
+  //variavel para armazenar o título utilizada no método pesquisarPorTitulo
+  titulo: string;
+
   constructor(private postagemService: PostagemService) { }
 
   // metodo que nao precisa de interação humana, ele ja inicia automaticamente
@@ -64,6 +67,12 @@ export class FeedComponent implements OnInit {
 
       // faz o reload automatico da pagina apos a função ser chamada
       location.assign('/feed');
+    })
+  }
+
+  pesquisarPorTitulo() {
+    this.postagemService.findByTitulo(this.titulo).subscribe((resp: Postagem[]) => {
+      this.listaPostagens = resp
     })
   }
 
