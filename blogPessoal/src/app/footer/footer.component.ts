@@ -10,6 +10,7 @@ import { faLinkedin } from '@fortawesome/free-brands-svg-icons'
 })
 //classe exportada
 export class FooterComponent implements OnInit {
+
   // Variaveis que recebem os icones
   faInstagram = faInstagram
   faFacebook = faFacebook

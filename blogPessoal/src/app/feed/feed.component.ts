@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PostagemService } from '../service/postagem.service';
 import { Postagem } from '../model/Postagem';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-feed',
@@ -10,6 +11,9 @@ import { Postagem } from '../model/Postagem';
 export class FeedComponent implements OnInit {
 
   // Variaves
+
+  //atribuindo o valor do campo nome que esta no localStorage para uma variável
+  nome: string = localStorage.getItem('nome');
 
   // key e reverse sao palavras reservadas do Orderby
   // a chave da ordenação
@@ -29,10 +33,22 @@ export class FeedComponent implements OnInit {
   //variavel para armazenar o título utilizada no método pesquisarPorTitulo
   titulo: string;
 
-  constructor(private postagemService: PostagemService) { }
+  constructor(private postagemService: PostagemService, private router: Router) { }
 
   // metodo que nao precisa de interação humana, ele ja inicia automaticamente
-  ngOnInit(): void {
+  ngOnInit() {
+
+    //Bloqueando o feed de ser acessado sem cadastro no site
+    //pega o token que esta no localStorage
+    let token = localStorage.getItem('token');
+    //Se não tenha token no localStorage (o usuario nao se logou)
+    if (token == null) {
+      //exibe alerta para se logar
+      alert("Faça o login antes de acessar a página Feed")
+      //redireciona para a rota de login
+      this.router.navigate(['/login'])
+    }
+
     this.findallPostagens()
 
     // sempre que abrir o Feed ira para o início da página
